@@ -101,6 +101,35 @@ body {
   }
 }
 
+/* Animation duration utilities */
+.animation-duration-3000 {
+  animation-duration: 3s;
+}
+
+.animation-duration-4000 {
+  animation-duration: 4s;
+}
+
+.animation-duration-5000 {
+  animation-duration: 5s;
+}
+
+.animation-duration-6000 {
+  animation-duration: 6s;
+}
+
+.animation-duration-8000 {
+  animation-duration: 8s;
+}
+
+.animation-duration-10000 {
+  animation-duration: 10s;
+}
+
+.animation-duration-12000 {
+  animation-duration: 12s;
+}
+
 /* Animation delay utilities */
 .animation-delay-500 {
   animation-delay: 0.5s;
