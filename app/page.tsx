@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import AnimatedBackground from "./components/AnimatedBackground";
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
@@ -15,6 +14,7 @@ export default function Home() {
   }, []);
 
   const toggleMobileMenu = () => {
+    console.log("Toggle mobile menu clicked, current state:", isMobileMenuOpen);
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
@@ -108,34 +108,49 @@ export default function Home() {
     return () => ctx.revert();
   }, [isClient]);
 
-  // Handle mobile menu body scroll lock
+  // Handle mobile menu body scroll lock and escape key
   useEffect(() => {
+    const body = document.body;
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
     if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+      body.style.position = "fixed";
+      body.style.width = "100%";
+      body.classList.add("menu-open");
+      document.addEventListener("keydown", handleEscape);
     } else {
-      document.body.style.overflow = "unset";
+      body.style.overflow = "";
+      body.style.position = "";
+      body.style.width = "";
+      body.classList.remove("menu-open");
+      document.removeEventListener("keydown", handleEscape);
     }
 
     // Cleanup function
     return () => {
-      document.body.style.overflow = "unset";
+      body.style.overflow = "";
+      body.style.position = "";
+      body.style.width = "";
+      body.classList.remove("menu-open");
+      document.removeEventListener("keydown", handleEscape);
     };
   }, [isMobileMenuOpen]);
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* Fallback background gradient */}
-      {!isClient && (
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20"></div>
-      )}
-
-      {/* Animated Background */}
-      <AnimatedBackground />
+      {/* Static background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20"></div>
 
       {/* Navigation */}
       <nav
         ref={navRef}
-        className="absolute top-0 left-0 right-0 z-10 flex justify-between items-center p-6 lg:p-8"
+        className="absolute top-0 left-0 right-0 z-40 flex justify-between items-center p-6 lg:p-8"
       >
         <div className="nav-item text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
           Dana
@@ -166,22 +181,22 @@ export default function Home() {
         {/* Mobile Hamburger Menu Button */}
         <button
           onClick={toggleMobileMenu}
-          className="md:hidden nav-item relative w-8 h-8 flex flex-col justify-center items-center space-y-1.5 group"
+          className="md:hidden nav-item mobile-menu-button relative w-10 h-10 flex flex-col justify-center items-center group z-30 rounded-lg hover:bg-white/10 transition-colors"
           aria-label="Toggle mobile menu"
         >
           <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
-              isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
+            className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out transform origin-center ${
+              isMobileMenuOpen ? "rotate-45 translate-y-0.5" : "-translate-y-1"
             }`}
           ></span>
           <span
             className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
-              isMobileMenuOpen ? "opacity-0" : ""
+              isMobileMenuOpen ? "opacity-0 scale-0" : "opacity-100 scale-100"
             }`}
           ></span>
           <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
-              isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+            className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out transform origin-center ${
+              isMobileMenuOpen ? "-rotate-45 -translate-y-0.5" : "translate-y-1"
             }`}
           ></span>
         </button>
@@ -189,58 +204,88 @@ export default function Home() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-20 md:hidden transition-all duration-300 ease-in-out ${
+        className={`mobile-menu-overlay fixed inset-0 z-50 md:hidden transition-all duration-300 ease-in-out ${
           isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
         {/* Backdrop */}
         <div
-          className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+          className="absolute inset-0 bg-black/90 backdrop-blur-sm"
           onClick={toggleMobileMenu}
         ></div>
 
         {/* Menu Content */}
         <div
-          className={`absolute top-0 right-0 w-80 h-full bg-gradient-to-b from-gray-900/95 to-black/95 backdrop-blur-md border-l border-purple-500/20 transform transition-transform duration-300 ease-in-out ${
+          className={`absolute top-0 right-0 w-full max-w-sm h-full bg-gradient-to-b from-gray-900/98 to-black/98 backdrop-blur-md border-l border-purple-500/30 shadow-2xl transform transition-transform duration-300 ease-in-out ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex flex-col p-8 pt-20 space-y-8">
+          {/* Close button */}
+          <button
+            onClick={toggleMobileMenu}
+            className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center text-white/70 hover:text-white transition-colors z-10"
+            aria-label="Close menu"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          <div className="flex flex-col p-8 pt-20 space-y-8 h-full">
             <a
               href="#about"
               onClick={toggleMobileMenu}
-              className="text-2xl font-light text-white hover:text-purple-400 transition-colors duration-300 border-b border-gray-700/50 pb-4"
+              className="text-2xl font-light text-white hover:text-purple-400 transition-all duration-300 border-b border-gray-700/50 pb-4 hover:pl-2"
             >
               About
             </a>
             <a
               href="#projects"
               onClick={toggleMobileMenu}
-              className="text-2xl font-light text-white hover:text-purple-400 transition-colors duration-300 border-b border-gray-700/50 pb-4"
+              className="text-2xl font-light text-white hover:text-purple-400 transition-all duration-300 border-b border-gray-700/50 pb-4 hover:pl-2"
             >
               Projects
             </a>
             <a
               href="#contact"
               onClick={toggleMobileMenu}
-              className="text-2xl font-light text-white hover:text-purple-400 transition-colors duration-300 border-b border-gray-700/50 pb-4"
+              className="text-2xl font-light text-white hover:text-purple-400 transition-all duration-300 border-b border-gray-700/50 pb-4 hover:pl-2"
             >
               Contact
             </a>
 
             {/* Social Links */}
-            <div className="pt-8 mt-8 border-t border-gray-700/50">
+            <div className="pt-8 mt-auto border-t border-gray-700/50">
               <p className="text-sm text-gray-400 mb-4">Let's connect</p>
               <div className="flex space-x-4">
-                <div className="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center">
-                  <span className="text-xs text-purple-400">💼</span>
-                </div>
-                <div className="w-8 h-8 bg-cyan-500/20 rounded-full flex items-center justify-center">
-                  <span className="text-xs text-cyan-400">📧</span>
-                </div>
-                <div className="w-8 h-8 bg-pink-500/20 rounded-full flex items-center justify-center">
-                  <span className="text-xs text-pink-400">🔗</span>
-                </div>
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center hover:bg-purple-500/30 transition-colors"
+                >
+                  <span className="text-sm text-purple-400">💼</span>
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-cyan-500/20 rounded-full flex items-center justify-center hover:bg-cyan-500/30 transition-colors"
+                >
+                  <span className="text-sm text-cyan-400">📧</span>
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-pink-500/20 rounded-full flex items-center justify-center hover:bg-pink-500/30 transition-colors"
+                >
+                  <span className="text-sm text-pink-400">🔗</span>
+                </a>
               </div>
             </div>
           </div>

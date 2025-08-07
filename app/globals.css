@@ -58,6 +58,24 @@ body {
     opacity: 1 !important;
     transform: none !important;
   }
+
+  /* Improve mobile hamburger menu */
+  .mobile-menu-button {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent scrolling when menu is open */
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Ensure mobile menu is above everything */
+  .mobile-menu-overlay {
+    z-index: 9999;
+  }
 }
 
 /* Custom animations */
