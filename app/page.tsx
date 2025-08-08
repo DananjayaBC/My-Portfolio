@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import SmokeBackground from "./components/SmokeBackground";
+import ParticleSystem from "./components/ParticleSystem";
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
@@ -145,7 +147,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Static background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20" />
+      {/* Animated smoke overlay */}
+      <SmokeBackground />
+      {/* Interactive particle system */}
+      <ParticleSystem
+        maxParticles={200}
+        particleSpeed={4}
+        particleLife={120}
+        colors={[
+          "rgba(255, 255, 255, 1.0)",
+          "rgba(255, 255, 255, 0.9)",
+          "rgba(255, 255, 255, 0.8)",
+          "rgba(255, 255, 255, 0.7)",
+        ]}
+      />
 
       {/* Navigation */}
       <nav

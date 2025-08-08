@@ -26,6 +26,148 @@ body {
   overflow-x: hidden;
 }
 
+/* ====== Soft Smoke Background ====== */
+.smoke-container {
+  filter: saturate(120%);
+}
+
+.smoke-layer {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.25;
+  filter: blur(60px);
+  mix-blend-mode: screen;
+}
+
+.smoke--purple {
+  background: radial-gradient(
+    35% 35% at 50% 50%,
+    rgba(168, 85, 247, 0.45),
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+.smoke--blue {
+  background: radial-gradient(
+    35% 35% at 50% 50%,
+    rgba(56, 189, 248, 0.35),
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+.smoke--pink {
+  background: radial-gradient(
+    35% 35% at 50% 50%,
+    rgba(244, 114, 182, 0.35),
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+.smoke--white {
+  background: radial-gradient(
+    35% 35% at 50% 50%,
+    rgba(255, 255, 255, 0.12),
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+@keyframes smoke-a {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(4%, -2%, 0) scale(1.05);
+  }
+  50% {
+    transform: translate3d(6%, 3%, 0) scale(1.08);
+  }
+  75% {
+    transform: translate3d(2%, -1%, 0) scale(1.03);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes smoke-b {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(-3%, 2%, 0) scale(1.04);
+  }
+  50% {
+    transform: translate3d(-6%, -2%, 0) scale(1.07);
+  }
+  75% {
+    transform: translate3d(-2%, 1%, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes smoke-c {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(2%, 3%, 0) scale(1.06);
+  }
+  50% {
+    transform: translate3d(-3%, 1%, 0) scale(1.09);
+  }
+  75% {
+    transform: translate3d(1%, -2%, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes smoke-d {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(-1%, -2%, 0) scale(1.03);
+  }
+  50% {
+    transform: translate3d(2%, -1%, 0) scale(1.05);
+  }
+  75% {
+    transform: translate3d(-2%, 1%, 0) scale(1.07);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Separate classes for motion-safe control */
+.animate-smoke-a {
+  animation: smoke-a 32s ease-in-out infinite alternate;
+}
+.animate-smoke-b {
+  animation: smoke-b 38s ease-in-out infinite alternate;
+}
+.animate-smoke-c {
+  animation: smoke-c 42s ease-in-out infinite alternate;
+}
+.animate-smoke-d {
+  animation: smoke-d 52s ease-in-out infinite alternate;
+}
+
+@media (max-width: 768px) {
+  .smoke-layer {
+    filter: blur(48px);
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .smoke-layer {
+    opacity: 0.18;
+    mix-blend-mode: multiply;
+  }
+}
+
 /* Custom gradient utilities */
 .bg-gradient-radial {
   background: radial-gradient(circle, var(--tw-gradient-stops));
