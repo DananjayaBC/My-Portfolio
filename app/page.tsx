@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import SmokeBackground from "./components/SmokeBackground";
-import ParticleSystem from "./components/ParticleSystem";
+import TechStack from "./components/TechStack";
+import AboutMe from "./components/AboutMe";
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
@@ -148,27 +148,13 @@ export default function Home() {
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Static background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20" />
-      {/* Animated smoke overlay */}
-      <SmokeBackground />
-      {/* Interactive particle system */}
-      <ParticleSystem
-        maxParticles={200}
-        particleSpeed={4}
-        particleLife={120}
-        colors={[
-          "rgba(255, 255, 255, 1.0)",
-          "rgba(255, 255, 255, 0.9)",
-          "rgba(255, 255, 255, 0.8)",
-          "rgba(255, 255, 255, 0.7)",
-        ]}
-      />
 
       {/* Navigation */}
       <nav
         ref={navRef}
         className="absolute top-0 left-0 right-0 z-40 flex justify-between items-center p-6 lg:p-8"
       >
-        <div className="nav-item text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+        <div className="nav-item text-2xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
           Dana
         </div>
 
@@ -282,7 +268,7 @@ export default function Home() {
 
             {/* Social Links */}
             <div className="pt-8 mt-auto border-t border-gray-700/50">
-              <p className="text-sm text-gray-400 mb-4">Let's connect</p>
+              <p className="text-sm text-gray-400 mb-4">Let&apos;s connect</p>
               <div className="flex space-x-4">
                 <a
                   href="#"
@@ -322,8 +308,8 @@ export default function Home() {
 
           {/* Main heading */}
           <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="block">Hi, I'm</span>
-            <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="block">Hi, I&apos;m</span>
+            <span className="block bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
               Dana Jay
             </span>
           </h1>
@@ -342,11 +328,11 @@ export default function Home() {
 
           {/* CTA buttons */}
           <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg font-semibold text-white transform transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.03] hover:shadow-2xl hover:shadow-purple-500/40 will-change-transform">
+            <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg font-semibold text-white transform transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.03] hover:shadow-2xl hover:shadow-purple-500/40 will-change-transform">
               <span className="relative z-10 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]">
                 View My Work
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-700 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] scale-110 group-hover:scale-100"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] scale-110 group-hover:scale-100"></div>
             </button>
 
             <button className="group relative px-8 py-4 border border-gray-600 rounded-lg font-semibold text-white transform transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-purple-400 hover:bg-purple-400/15 hover:scale-[1.03] hover:shadow-xl hover:shadow-purple-400/30 overflow-hidden will-change-transform">
@@ -366,7 +352,7 @@ export default function Home() {
                   />
                 </svg>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/25 to-pink-600/25 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] scale-110 group-hover:scale-100"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/25 to-blue-600/25 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] scale-110 group-hover:scale-100"></div>
             </button>
           </div>
         </div>
@@ -383,6 +369,12 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      {/* Technology Stack Section */}
+      <TechStack />
+
+      {/* About Me Section */}
+      <AboutMe />
     </div>
   );
 }
