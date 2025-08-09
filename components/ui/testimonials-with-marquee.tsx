@@ -24,6 +24,7 @@ export function TestimonialsSection({
 }: TestimonialsSectionProps) {
   return (
     <section
+      id="testimonials"
       className={cn(
         "relative bg-black text-white overflow-hidden",
         "h-screen px-0",
@@ -46,19 +47,52 @@ export function TestimonialsSection({
         </div>
 
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <div className="group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row [--duration:40s]">
-            <div className="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row group-hover:[animation-play-state:paused]">
-              {[...Array(4)].map((_, setIndex) =>
-                testimonials.map((testimonial, i) => (
-                  <TestimonialCard key={`${setIndex}-${i}`} {...testimonial} />
-                ))
-              )}
+          <div className="group w-full overflow-hidden p-2 [--gap:1rem] [--duration:40s]">
+            <div className="testimonial-scroller flex">
+              <div className="flex shrink-0 flex-row flex-nowrap justify-start [gap:var(--gap)]">
+                {testimonials.map((testimonial, i) => (
+                  <TestimonialCard
+                    key={`set1-${i}`}
+                    className="flex-none"
+                    {...testimonial}
+                  />
+                ))}
+              </div>
+              <div
+                className="flex shrink-0 flex-row flex-nowrap justify-start [gap:var(--gap)]"
+                aria-hidden="true"
+              >
+                {testimonials.map((testimonial, i) => (
+                  <TestimonialCard
+                    key={`set2-${i}`}
+                    className="flex-none"
+                    {...testimonial}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
           <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-black sm:block" />
           <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-black sm:block" />
         </div>
+        <style jsx>{`
+          .testimonial-scroller {
+            animation: testimonial-scroll var(--duration) linear infinite;
+            will-change: transform;
+          }
+          :global(.group:hover) .testimonial-scroller {
+            animation-play-state: paused;
+          }
+          @keyframes testimonial-scroll {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-50%);
+            }
+          }
+        `}</style>
       </div>
     </section>
   );

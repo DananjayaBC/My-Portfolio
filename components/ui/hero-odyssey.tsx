@@ -386,7 +386,7 @@ export const HeroSection: React.FC = () => {
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="order-1 px-4 backdrop-blur-3xl bg-black/50 rounded-50 py-4 flex justify-between items-center mb-12"
+          className="order-1 px-4 backdrop-blur-3xl bg-black/50 rounded-50 py-4 flex justify-between items-center mb-12 relative"
         >
           <div className="flex items-center">
             <div className="text-2xl font-bold">
@@ -398,24 +398,27 @@ export const HeroSection: React.FC = () => {
                 />
               </svg>
             </div>
-            <div className="hidden md:flex items-center space-x-6 ml-8">
-              <button className="px-4 py-2 bg-gray-800/50 hover:bg-gray-700/50 rounded-full text-sm transition-colors">
-                Start
-              </button>
-              <button className="px-4 py-2 text-sm hover:text-gray-300 transition-colors">
-                Home
-              </button>
-              <button className="px-4 py-2 text-sm hover:text-gray-300 transition-colors">
-                Contacts
-              </button>
-              <button className="px-4 py-2 text-sm hover:text-gray-300 transition-colors">
-                Help
-              </button>
-              <button className="px-4 py-2 text-sm hover:text-gray-300 transition-colors">
-                Docs
-              </button>
-            </div>
           </div>
+          <nav className="hidden md:flex items-center space-x-8 absolute left-1/2 -translate-x-1/2">
+            <a
+              href="#about-me"
+              className="px-4 py-2 text-sm hover:text-gray-300 transition-colors"
+            >
+              About
+            </a>
+            <a
+              href="#projects"
+              className="px-4 py-2 text-sm hover:text-gray-300 transition-colors"
+            >
+              Projects
+            </a>
+            <a
+              href="#testimonials"
+              className="px-4 py-2 text-sm hover:text-gray-300 transition-colors"
+            >
+              Testimonials
+            </a>
+          </nav>
           <div className="flex items-center space-x-4">
             <a
               href="#contact"
@@ -486,13 +489,27 @@ export const HeroSection: React.FC = () => {
                   />
                 </svg>
               </button>
-              <button className="px-6 py-3 bg-gray-800/50 rounded-full">
-                Start
-              </button>
-              <button className="px-6 py-3">Home</button>
-              <button className="px-6 py-3">Contacts</button>
-              <button className="px-6 py-3">Help</button>
-              <button className="px-6 py-3">Docs</button>
+              <a
+                href="#about-me"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-6 py-3"
+              >
+                About
+              </a>
+              <a
+                href="#projects"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-6 py-3"
+              >
+                Projects
+              </a>
+              <a
+                href="#testimonials"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-6 py-3"
+              >
+                Testimonials
+              </a>
               <a
                 href="#contact"
                 className="px-6 py-3 bg-gray-800/80 backdrop-blur-sm rounded-full"
