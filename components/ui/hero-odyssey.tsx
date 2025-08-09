@@ -622,6 +622,27 @@ export const HeroSection: React.FC = () => {
           >
             Get in touch
           </motion.a>
+
+          <motion.a
+            variants={itemVariants}
+            href="#about-me"
+            aria-label="Scroll down to learn more"
+            className="mt-6 flex flex-col items-center gap-2 text-gray-400 hover:text-gray-200 transition-colors"
+          >
+            <span className="text-xs tracking-wide uppercase">Scroll down</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5 animate-bounce"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </motion.a>
         </motion.div>
       </div>
 

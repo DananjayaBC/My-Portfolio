@@ -47,7 +47,7 @@ export function TestimonialsSection({
         </div>
 
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <div className="group w-full overflow-hidden p-2 [--gap:1rem] [--duration:40s]">
+          <div className="group w-full overflow-hidden p-2 [--gap:1.5rem] sm:[--gap:2rem] [--duration:40s]">
             <div className="testimonial-scroller flex">
               <div className="flex shrink-0 flex-row flex-nowrap justify-start [gap:var(--gap)]">
                 {testimonials.map((testimonial, i) => (
@@ -59,7 +59,7 @@ export function TestimonialsSection({
                 ))}
               </div>
               <div
-                className="flex shrink-0 flex-row flex-nowrap justify-start [gap:var(--gap)]"
+                className="flex shrink-0 flex-row flex-nowrap justify-start [gap:var(--gap)] ml-[var(--gap)]"
                 aria-hidden="true"
               >
                 {testimonials.map((testimonial, i) => (
