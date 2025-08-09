@@ -308,18 +308,18 @@ const Lightning: React.FC<LightningProps> = ({
 const FeatureItem: React.FC<FeatureItemProps> = ({ name, value, position }) => {
   return (
     <div
-      className={`sm:absolute ${position} z-10 group transition-all duration-300 hover:scale-110`}
+      className={`hidden sm:block sm:absolute ${position} z-10 group transition-all duration-300 hover:scale-110`}
     >
       <div className="flex items-center gap-2 relative justify-center sm:justify-start">
         <div className="relative">
           <div className="w-2 h-2 bg-white rounded-full group-hover:animate-pulse"></div>
           <div className="absolute -inset-1 bg-white/20 rounded-full blur-sm opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
-        <div className=" text-white relative">
+        <div className="hidden sm:block text-white relative">
           <div className="font-medium text-sm sm:text-base group-hover:text-white transition-colors duration-300">
             {name}
           </div>
-          <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/70 transition-colors duration-300">
+          <div className="hidden sm:block text-white/70 text-xs sm:text-sm group-hover:text-white/70 transition-colors duration-300">
             {value}
           </div>
           <div className="absolute -inset-2 bg-white/10 rounded-lg blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
@@ -381,7 +381,7 @@ export const HeroSection: React.FC = () => {
 
   return (
     <div className="relative w-full bg-gradient-to-b from-black via-[#0b1a30] to-black sm:bg-black text-white overflow-hidden">
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-0 sm:pb-6 min-h-[100svh] md:h-[100dvh] flex flex-col">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-0 sm:pb-6 h-[100svh] md:h-[100dvh] flex flex-col">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

@@ -73,7 +73,7 @@ export default function ProjectsSection() {
       <InteractiveBentoGallery
         mediaItems={mediaItems}
         title="Projects"
-        description="Drag and explore selected work and experiments"
+        description="Explore selected work and experiments"
       />
     </section>
   );
