@@ -363,6 +363,22 @@ export const HeroSection: React.FC = () => {
     },
   };
 
+  // Variants specifically for the floating feature labels around the globe.
+  // These fade in in-place to avoid layout shifts or elements sliding from
+  // different directions on initial load.
+  const featuresContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
+  const featureItemVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.4 },
+    },
+  };
+
   return (
     <div className="relative w-full bg-black text-white overflow-hidden">
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 h-screen flex flex-col">
@@ -482,33 +498,33 @@ export const HeroSection: React.FC = () => {
         )}
 
         <motion.div
-          variants={containerVariants}
+          variants={featuresContainerVariants}
           initial="hidden"
           animate="visible"
           className="order-3 sm:order-2 w-full z-20 relative top-0 sm:top-[30%] mt-8 sm:mt-0 grid grid-cols-2 gap-4 sm:gap-0 justify-items-center sm:block mb-6"
         >
-          <motion.div variants={itemVariants}>
+          <motion.div variants={featureItemVariants}>
             <FeatureItem
               name="React"
               value="core library"
               position="left-0 sm:left-10 top-40"
             />
           </motion.div>
-          <motion.div variants={itemVariants}>
+          <motion.div variants={featureItemVariants}>
             <FeatureItem
               name="Tailwind"
               value="for styling"
               position="left-1/4 top-24"
             />
           </motion.div>
-          <motion.div variants={itemVariants}>
+          <motion.div variants={featureItemVariants}>
             <FeatureItem
               name="Framer Motion"
               value="for animation"
               position="right-1/4 top-24"
             />
           </motion.div>
-          <motion.div variants={itemVariants}>
+          <motion.div variants={featureItemVariants}>
             <FeatureItem
               name="Shaders"
               value="creative visuals"
