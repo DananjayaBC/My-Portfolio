@@ -308,18 +308,18 @@ const Lightning: React.FC<LightningProps> = ({
 const FeatureItem: React.FC<FeatureItemProps> = ({ name, value, position }) => {
   return (
     <div
-      className={`absolute ${position} z-10 group transition-all duration-300 hover:scale-110`}
+      className={`sm:absolute ${position} z-10 group transition-all duration-300 hover:scale-110`}
     >
-      <div className="flex items-center gap-2 relative">
+      <div className="flex items-center gap-2 relative justify-center sm:justify-start">
         <div className="relative">
           <div className="w-2 h-2 bg-white rounded-full group-hover:animate-pulse"></div>
           <div className="absolute -inset-1 bg-white/20 rounded-full blur-sm opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
         <div className=" text-white relative">
-          <div className="font-medium group-hover:text-white transition-colors duration-300">
+          <div className="font-medium text-sm sm:text-base group-hover:text-white transition-colors duration-300">
             {name}
           </div>
-          <div className="text-white/70 text-sm group-hover:text-white/70 transition-colors duration-300">
+          <div className="text-white/70 text-xs sm:text-sm group-hover:text-white/70 transition-colors duration-300">
             {value}
           </div>
           <div className="absolute -inset-2 bg-white/10 rounded-lg blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
@@ -357,12 +357,12 @@ export const HeroSection: React.FC = () => {
 
   return (
     <div className="relative w-full bg-black text-white overflow-hidden">
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 h-screen">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 h-screen flex flex-col">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="px-4 backdrop-blur-3xl bg-black/50 rounded-50 py-4 flex justify-between items-center mb-12"
+          className="order-1 px-4 backdrop-blur-3xl bg-black/50 rounded-50 py-4 flex justify-between items-center mb-12"
         >
           <div className="flex items-center">
             <div className="text-2xl font-bold">
@@ -481,7 +481,7 @@ export const HeroSection: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="w-full z-200 top-[30%] relative"
+          className="order-3 sm:order-2 w-full z-20 relative top-0 sm:top-[30%] mt-8 sm:mt-0 grid grid-cols-2 gap-4 sm:gap-0 justify-items-center sm:block mb-6"
         >
           <motion.div variants={itemVariants}>
             <FeatureItem
@@ -517,7 +517,7 @@ export const HeroSection: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="relative z-30 flex flex-col items-center text-center max-w-4xl mx-auto "
+          className="order-2 sm:order-3 relative z-30 flex flex-col items-center text-center max-w-4xl mx-auto "
         >
           <ElasticHueSlider
             value={lightningHue}
