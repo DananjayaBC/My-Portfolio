@@ -380,8 +380,8 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full bg-black text-white overflow-hidden">
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 h-screen flex flex-col">
+    <div className="relative w-full bg-gradient-to-b from-black via-[#0b1a30] to-black sm:bg-black text-white overflow-hidden">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-0 sm:pb-6 min-h-[100svh] md:h-[100dvh] flex flex-col">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -399,7 +399,7 @@ export const HeroSection: React.FC = () => {
               </svg>
             </div>
           </div>
-          <nav className="hidden md:flex items-center space-x-8 absolute left-1/2 -translate-x-1/2">
+          <nav className="hidden md:flex items-center space-x-8 md:absolute md:left-1/2 md:-translate-x-1/2">
             <a
               href="#about-me"
               className="px-4 py-2 text-sm hover:text-gray-300 transition-colors"
@@ -524,7 +524,7 @@ export const HeroSection: React.FC = () => {
           variants={featuresContainerVariants}
           initial="hidden"
           animate="visible"
-          className="order-3 sm:order-2 w-full z-20 relative top-0 sm:top-[30%] mt-8 sm:mt-0 grid grid-cols-2 gap-4 sm:gap-0 justify-items-center sm:block mb-6"
+          className="order-3 sm:order-2 w-full z-20 relative top-0 sm:top-[30%] mt-8 sm:mt-0 grid grid-cols-2 gap-4 sm:gap-0 justify-items-center sm:block mb-0 sm:mb-6"
         >
           <motion.div variants={featureItemVariants}>
             <FeatureItem
@@ -618,7 +618,7 @@ export const HeroSection: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="#contact"
-            className="mt-[100px] sm:mt-[100px] px-8 py-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
+            className="mt-10 sm:mt-[100px] px-8 py-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
           >
             Get in touch
           </motion.a>
@@ -627,7 +627,7 @@ export const HeroSection: React.FC = () => {
             variants={itemVariants}
             href="#about-me"
             aria-label="Scroll down to learn more"
-            className="mt-6 flex flex-col items-center gap-2 text-gray-400 hover:text-gray-200 transition-colors"
+            className="mt-6 sm:mt-8 flex flex-col items-center gap-2 text-gray-400 hover:text-gray-200 transition-colors"
           >
             <span className="text-xs tracking-wide uppercase">Scroll down</span>
             <svg
@@ -652,11 +652,11 @@ export const HeroSection: React.FC = () => {
         transition={{ duration: 1 }}
         className="absolute inset-0 z-0"
       >
-        <div className="absolute inset-0 bg-black/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-[#0b1a30]/70 to-black/60 sm:bg-black/80"></div>
 
-        <div className="absolute top-[55%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-b from-blue-500/20 to-purple-600/10 blur-3xl"></div>
+        <div className="absolute top-[55%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[560px] sm:h-[560px] md:w-[800px] md:h-[800px] rounded-full bg-gradient-to-b from-blue-500/20 to-purple-600/10 blur-3xl"></div>
 
-        <div className="absolute top-0 w-full h-full left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2">
+        <div className="absolute top-0 w-full h-full left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2 pointer-events-none">
           <Lightning
             hue={lightningHue}
             xOffset={isMobile ? 0.2 : 0}
@@ -666,7 +666,7 @@ export const HeroSection: React.FC = () => {
           />
         </div>
 
-        <div className="z-10 absolute top-[55%] left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] backdrop-blur-3xl rounded-full bg-[radial-gradient(circle_at_25%_90%,_#1e386b_15%,_#000000de_70%,_#000000ed_100%)]"></div>
+        <div className="z-10 absolute top-[55%] left-1/2 transform -translate-x-1/2 w-[280px] h-[280px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] backdrop-blur-3xl rounded-full bg-[radial-gradient(circle_at_25%_90%,_#1e386b_15%,_#000000de_70%,_#000000ed_100%)]"></div>
       </motion.div>
     </div>
   );

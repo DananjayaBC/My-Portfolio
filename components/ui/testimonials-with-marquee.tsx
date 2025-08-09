@@ -26,8 +26,8 @@ export function TestimonialsSection({
     <section
       id="testimonials"
       className={cn(
-        "relative bg-black text-white overflow-hidden",
-        "h-screen px-0",
+        "relative bg-gradient-to-b from-black via-[#0b1a30] to-black sm:bg-black text-white overflow-hidden",
+        "min-h-[100svh] px-0",
         "flex items-center justify-center text-center",
         className
       )}

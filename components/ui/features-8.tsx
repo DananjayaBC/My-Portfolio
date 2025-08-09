@@ -5,7 +5,7 @@ export function Features() {
   return (
     <section
       id="about-me"
-      className="relative bg-black text-white min-h-screen lg:h-screen overflow-visible lg:overflow-hidden"
+      className="relative bg-gradient-to-b from-black via-[#0b1a30] to-black sm:bg-black text-white min-h-[100svh] lg:min-h-screen lg:h-screen overflow-visible lg:overflow-hidden"
     >
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-gradient-to-b from-[#1e386b]/25 to-black/0 blur-3xl" />
@@ -13,7 +13,7 @@ export function Features() {
       </div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
         <div className="relative h-auto md:h-full">
-          <div className="mt-16 md:mt-24 mb-8 text-center">
+          <div className="mt-0 md:mt-24 mb-8 text-center pt-6 md:pt-0">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-200 dark:to-white">
               About Me
             </h1>

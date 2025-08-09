@@ -31,7 +31,7 @@ export function Footer({
   copyright,
 }: FooterProps) {
   return (
-    <footer className="relative overflow-hidden bg-black text-white pb-6 pt-16 lg:pb-8 lg:pt-24">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-black via-[#0b1a30] to-black sm:bg-black text-white pb-6 pt-16 lg:pb-8 lg:pt-24">
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-gradient-to-b from-[#1e386b]/25 to-black/0 blur-3xl" />
         <div className="absolute -bottom-40 -right-40 h-[520px] w-[520px] rounded-full bg-gradient-to-b from-[#1e386b]/15 to-black/0 blur-3xl" />

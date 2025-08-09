@@ -11,7 +11,7 @@ import { Hexagon, Github, Twitter } from "lucide-react";
 const DemoOne = () => {
   return (
     <main className="w-full">
-      <section className="flex w-full h-screen justify-center items-center">
+      <section className="w-full">
         <HeroSection />
       </section>
       <Features />

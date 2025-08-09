@@ -27,7 +27,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative bg-black text-white h-screen flex items-center"
+      className="relative bg-gradient-to-b from-black via-[#0b1a30] to-black sm:bg-black text-white min-h-[100svh] flex items-center"
     >
       {/* Ambient gradient background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">

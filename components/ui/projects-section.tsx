@@ -64,7 +64,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative bg-white dark:bg-black h-screen flex items-center justify-center text-center overflow-hidden"
+      className="relative bg-gradient-to-b from-black via-[#0b1a30] to-black sm:bg-black text-white min-h-[100svh] flex items-center justify-center text-center overflow-hidden"
     >
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-gradient-to-b from-[#1e386b]/20 to-black/0 blur-3xl" />
