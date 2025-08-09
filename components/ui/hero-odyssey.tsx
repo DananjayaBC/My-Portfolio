@@ -332,6 +332,14 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ name, value, position }) => {
 export const HeroSection: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lightningHue, setLightningHue] = useState(220);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -591,10 +599,10 @@ export const HeroSection: React.FC = () => {
 
         <div className="absolute top-[55%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-b from-blue-500/20 to-purple-600/10 blur-3xl"></div>
 
-        <div className="absolute top-0 w-[100%] left-1/2 transform -translate-x-1/2 h-full">
+        <div className="absolute top-0 w-full h-full left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2">
           <Lightning
             hue={lightningHue}
-            xOffset={0}
+            xOffset={isMobile ? -0.12 : 0}
             speed={1.6}
             intensity={0.6}
             size={2}
