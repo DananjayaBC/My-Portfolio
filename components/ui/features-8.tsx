@@ -5,8 +5,12 @@ export function Features() {
   return (
     <section
       id="about-me"
-      className="bg-black text-white min-h-screen lg:h-screen overflow-visible lg:overflow-hidden"
+      className="relative bg-black text-white min-h-screen lg:h-screen overflow-visible lg:overflow-hidden"
     >
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-gradient-to-b from-[#1e386b]/25 to-black/0 blur-3xl" />
+        <div className="absolute -bottom-40 -right-40 h-[520px] w-[520px] rounded-full bg-gradient-to-b from-[#1e386b]/15 to-black/0 blur-3xl" />
+      </div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
         <div className="relative h-auto md:h-full">
           <div className="mt-16 md:mt-24 mb-8 text-center">

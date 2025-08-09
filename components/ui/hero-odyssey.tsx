@@ -417,9 +417,12 @@ export const HeroSection: React.FC = () => {
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <button className="px-4 py-2 bg-gray-800/80 backdrop-blur-sm rounded-full text-sm hover:bg-gray-700/80 transition-colors">
+            <a
+              href="#contact"
+              className="px-4 py-2 bg-gray-800/80 backdrop-blur-sm rounded-full text-sm hover:bg-gray-700/80 transition-colors"
+            >
               Contact me
-            </button>
+            </a>
             <button
               className="md:hidden p-2 rounded-md focus:outline-none"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -490,9 +493,12 @@ export const HeroSection: React.FC = () => {
               <button className="px-6 py-3">Contacts</button>
               <button className="px-6 py-3">Help</button>
               <button className="px-6 py-3">Docs</button>
-              <button className="px-6 py-3 bg-gray-800/80 backdrop-blur-sm rounded-full">
+              <a
+                href="#contact"
+                className="px-6 py-3 bg-gray-800/80 backdrop-blur-sm rounded-full"
+              >
                 Contact me
-              </button>
+              </a>
             </div>
           </motion.div>
         )}
@@ -590,14 +596,15 @@ export const HeroSection: React.FC = () => {
             motion. This interactive hero is part of my portfolio.
           </motion.p>
 
-          <motion.button
+          <motion.a
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            href="#contact"
             className="mt-[100px] sm:mt-[100px] px-8 py-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
           >
             Get in touch
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
 

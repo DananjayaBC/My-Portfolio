@@ -64,8 +64,12 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="bg-white dark:bg-black h-screen flex items-center justify-center text-center"
+      className="relative bg-white dark:bg-black h-screen flex items-center justify-center text-center overflow-hidden"
     >
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-gradient-to-b from-[#1e386b]/20 to-black/0 blur-3xl" />
+        <div className="absolute -bottom-40 -right-40 h-[520px] w-[520px] rounded-full bg-gradient-to-b from-[#1e386b]/10 to-black/0 blur-3xl" />
+      </div>
       <InteractiveBentoGallery
         mediaItems={mediaItems}
         title="Projects"
