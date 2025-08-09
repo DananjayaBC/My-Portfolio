@@ -2,6 +2,7 @@
 
 import { HeroSection } from "@/components/ui/hero-odyssey";
 import { Features } from "@/components/ui/features-8";
+import ProjectsSection from "@/components/ui/projects-section";
 
 const DemoOne = () => {
   return (
@@ -10,6 +11,7 @@ const DemoOne = () => {
         <HeroSection />
       </section>
       <Features />
+      <ProjectsSection />
     </main>
   );
 };

@@ -3,13 +3,21 @@ import { Shield, Users } from "lucide-react";
 
 export function Features() {
   return (
-    <section className="bg-black text-white min-h-screen lg:h-screen overflow-visible lg:overflow-hidden">
+    <section
+      id="about-me"
+      className="bg-black text-white min-h-screen lg:h-screen overflow-visible lg:overflow-hidden"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
         <div className="relative h-auto md:h-full">
-          <h2 className="z-20 text-2xl md:text-4xl font-semibold tracking-tight md:absolute md:top-8 md:left-0">
-            About Me
-          </h2>
-          <div className="relative z-10 flex h-full items-start justify-start py-10 md:items-center md:justify-center md:py-0">
+          <div className="mt-16 md:mt-24 mb-8 text-center">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-200 dark:to-white">
+              About Me
+            </h1>
+            <p className="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-400">
+              Background, skills, and how I build.
+            </p>
+          </div>
+          <div className="relative z-10 flex items-start justify-start py-10 md:items-center md:justify-center md:py-0">
             <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-6 sm:gap-3">
               <Card className="relative col-span-full flex overflow-hidden lg:col-span-2 bg-transparent text-white border-white/10">
                 <CardContent className="relative m-auto size-fit pt-6">
