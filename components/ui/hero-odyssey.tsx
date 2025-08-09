@@ -401,11 +401,8 @@ export const HeroSection: React.FC = () => {
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <button className="hidden md:block px-4 py-2 text-sm hover:text-gray-300 transition-colors">
-              Register
-            </button>
             <button className="px-4 py-2 bg-gray-800/80 backdrop-blur-sm rounded-full text-sm hover:bg-gray-700/80 transition-colors">
-              Application
+              Contact me
             </button>
             <button
               className="md:hidden p-2 rounded-md focus:outline-none"
@@ -477,9 +474,8 @@ export const HeroSection: React.FC = () => {
               <button className="px-6 py-3">Contacts</button>
               <button className="px-6 py-3">Help</button>
               <button className="px-6 py-3">Docs</button>
-              <button className="px-6 py-3">Register</button>
               <button className="px-6 py-3 bg-gray-800/80 backdrop-blur-sm rounded-full">
-                Application
+                Contact me
               </button>
             </div>
           </motion.div>
@@ -602,7 +598,7 @@ export const HeroSection: React.FC = () => {
         <div className="absolute top-0 w-full h-full left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2">
           <Lightning
             hue={lightningHue}
-            xOffset={isMobile ? -0.12 : 0}
+            xOffset={isMobile ? 0.2 : 0}
             speed={1.6}
             intensity={0.6}
             size={2}
