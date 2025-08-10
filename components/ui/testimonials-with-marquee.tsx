@@ -27,8 +27,8 @@ export function TestimonialsSection({
       id="testimonials"
       className={cn(
         "relative bg-gradient-to-b from-black via-[#0b1a30] to-black sm:bg-black text-white overflow-hidden",
-        // Exact viewport height on all screens
-        "h-[100svh]",
+        // Full viewport height on all screens with dynamic viewport fallback
+        "h-[100svh] supports-[height:100dvh]:h-[100dvh]",
         "px-4 sm:px-6 lg:px-8 py-12 sm:py-20",
         "flex items-center justify-center text-center",
         className
@@ -50,25 +50,25 @@ export function TestimonialsSection({
         </div>
 
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <div className="group w-full overflow-hidden p-2 [--gap:1.5rem] sm:[--gap:2rem] [--duration:40s]">
+          <div className="group mobile-scroll w-full overflow-x-auto sm:overflow-hidden p-2 -mx-4 px-4 snap-x snap-mandatory [--gap:1.5rem] sm:[--gap:2rem] [--duration:40s]">
             <div className="testimonial-scroller flex">
               <div className="flex shrink-0 flex-row flex-nowrap justify-start [gap:var(--gap)]">
                 {testimonials.map((testimonial, i) => (
                   <TestimonialCard
                     key={`set1-${i}`}
-                    className="flex-none"
+                    className="flex-none snap-start"
                     {...testimonial}
                   />
                 ))}
               </div>
               <div
-                className="flex shrink-0 flex-row flex-nowrap justify-start [gap:var(--gap)] ml-[var(--gap)]"
+                className="hidden shrink-0 flex-row flex-nowrap justify-start [gap:var(--gap)] ml-[var(--gap)] sm:flex"
                 aria-hidden="true"
               >
                 {testimonials.map((testimonial, i) => (
                   <TestimonialCard
                     key={`set2-${i}`}
-                    className="flex-none"
+                    className="flex-none snap-start"
                     {...testimonial}
                   />
                 ))}
@@ -79,13 +79,50 @@ export function TestimonialsSection({
           <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-black sm:block" />
           <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-black sm:block" />
         </div>
+        <div className="mt-6 flex items-center justify-center gap-2 text-gray-400 sm:hidden">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden
+          >
+            <path
+              d="M7 12H3m0 0 2.5 2.5M3 12l2.5-2.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M17 12h4m0 0-2.5 2.5M21 12l-2.5-2.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span className="text-sm">Swipe to explore</span>
+        </div>
         <style jsx>{`
-          .testimonial-scroller {
-            animation: testimonial-scroll var(--duration) linear infinite;
-            will-change: transform;
+          /* Hide scrollbar on mobile swipe container */
+          .mobile-scroll::-webkit-scrollbar {
+            display: none;
           }
-          :global(.group:hover) .testimonial-scroller {
-            animation-play-state: paused;
+          .mobile-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+
+          @media (min-width: 640px) {
+            .testimonial-scroller {
+              animation: testimonial-scroll var(--duration) linear infinite;
+              will-change: transform;
+            }
+            :global(.group:hover) .testimonial-scroller {
+              animation-play-state: paused;
+            }
           }
           @keyframes testimonial-scroll {
             from {
