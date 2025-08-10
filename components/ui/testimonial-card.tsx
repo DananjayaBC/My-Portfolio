@@ -26,11 +26,14 @@ export function TestimonialCard({
     <Card
       {...(href ? { href } : {})}
       className={cn(
-        "flex flex-col rounded-lg border-t",
+        "flex flex-col rounded-lg border-t shadow-sm",
         "bg-gradient-to-b from-muted/50 to-muted/10",
         "p-4 text-start sm:p-6",
         "hover:from-muted/60 hover:to-muted/20",
-        "max-w-[320px] sm:max-w-[320px]",
+        // Make cards more readable on mobile while keeping stable width for marquee
+        "w-[88vw] max-w-[88vw] min-w-[260px] sm:w-[320px] sm:max-w-[320px]",
+        // Slightly taller cards for better readability and consistency
+        "min-h-[180px] sm:min-h-[200px]",
         "transition-colors duration-300",
         className
       )}
@@ -44,7 +47,9 @@ export function TestimonialCard({
           <p className="text-sm text-muted-foreground">{author.handle}</p>
         </div>
       </div>
-      <p className="sm:text-md mt-4 text-sm text-muted-foreground">{text}</p>
+      <p className="mt-3 text-[0.95rem] text-muted-foreground sm:mt-4 sm:text-base">
+        {text}
+      </p>
     </Card>
   );
 }

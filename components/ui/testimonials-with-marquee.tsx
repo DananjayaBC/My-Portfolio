@@ -27,7 +27,9 @@ export function TestimonialsSection({
       id="testimonials"
       className={cn(
         "relative bg-gradient-to-b from-black via-[#0b1a30] to-black sm:bg-black text-white overflow-hidden",
-        "min-h-[100svh] px-0",
+        // Exact viewport height on all screens
+        "h-[100svh]",
+        "px-4 sm:px-6 lg:px-8 py-12 sm:py-20",
         "flex items-center justify-center text-center",
         className
       )}
@@ -36,14 +38,15 @@ export function TestimonialsSection({
         <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-gradient-to-b from-[#1e386b]/20 to-black/0 blur-3xl" />
         <div className="absolute -bottom-40 -right-40 h-[520px] w-[520px] rounded-full bg-gradient-to-b from-[#1e386b]/10 to-black/0 blur-3xl" />
       </div>
-      <div className="mx-auto flex max-w-container flex-col items-center gap-4 text-center sm:gap-16">
-        <div className="flex flex-col items-center gap-4 px-4 sm:gap-8">
-          <h2 className="max-w-[720px] text-3xl font-semibold leading-tight sm:text-5xl sm:leading-tight">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-4 text-center sm:gap-16">
+        <div className="mb-12 w-full px-4 text-center">
+          <p className="inline-flex items-center rounded-full bg-white/5 px-3 py-1 text-xs text-gray-300 ring-1 ring-white/10 backdrop-blur">
+            Testimonials
+          </p>
+          <h2 className="mx-auto mt-4 max-w-[720px] text-balance text-4xl font-semibold sm:text-5xl">
             {title}
           </h2>
-          <p className="text-md max-w-[600px] font-medium text-muted-foreground sm:text-xl">
-            {description}
-          </p>
+          <p className="mx-auto mt-3 max-w-2xl text-gray-400">{description}</p>
         </div>
 
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
