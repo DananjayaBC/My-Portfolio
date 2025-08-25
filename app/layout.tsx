@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Dana Jay",
   description: "Web Developer",
+  other: {
+    "facebook-domain-verification": "n5zjcul4krv7yk2bbstt8rdi187cc3",
+  },
 };
 
 export default function RootLayout({

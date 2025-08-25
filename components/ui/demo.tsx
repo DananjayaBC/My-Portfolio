@@ -77,7 +77,7 @@ const DemoOne = () => {
           { href: "/privacy", label: "Privacy" },
           { href: "/terms", label: "Terms" },
         ]}
-        copyright={{ text: "© 2024 Dana Jay", license: "All rights reserved" }}
+        copyright={{ text: "© 2025 Dana Jay", license: "All rights reserved" }}
       />
     </main>
   );
